@@ -30,6 +30,7 @@ class CartComponent extends Component
         session()->flash('success_message','Item has been removed');
         
     }
+  
 
     public function render()
     {

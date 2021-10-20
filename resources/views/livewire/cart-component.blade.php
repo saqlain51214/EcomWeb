@@ -1,6 +1,6 @@
-	<!--main area-->
-<div wire:key>
-	<main wire:ignore.self id="main" class="main-site" >
+<div>
+<!--main area-->
+	<main  id="main" class="main-site" >
 
 	    <div class="container">
 
@@ -24,7 +24,7 @@
 	                <h3 class="box-title">Products Name</h3>
 	                <ul class="products-cart">
 	                    @foreach (Cart::content() as $item)
-	                    <li class="pr-cart-item" >
+	                    <li class="pr-cart-item"  >
 	                        <div class="product-image">
 	                            <figure><img src="{{asset('assets/images/products')}}/{{$item->model->image}}"
 	                                    alt="{{$item->model->name}}"></figure>
@@ -40,9 +40,9 @@
 	                            <div class="quantity-input">
 	                                <input type="text" name="product-quatity" value="{{$item->qty}}" data-max="120"
 	                                    pattern="[0-9]*">
-	                                <a class="btn btn-increase" href="#"
+	                                <a class="btn btn-increase" href="#" id="inc"
 	                                    wire:click.prevent="increaseQuantity('{{$item->rowId}}')"></a>
-	                                <a class="btn btn-reduce" href="#"
+	                                <a class="btn btn-reduce" href="#" id="dec"
 	                                    wire:click.prevent="decreaseQuantity('{{$item->rowId}}')"></a>
 	                            </div>
 	                        </div>
@@ -50,7 +50,7 @@
 	                            <p class="price">Rs.{{$item->subtotal}}</p>
 	                        </div>
 	                        <div class="delete" >
-	                            <a href="#" class="btn btn-delete" title=""
+	                            <a href="#" class="btn btn-delete" title="" id="del"
 	                                wire:click.prevent="destroy(`{{$item->rowId}}`)">
 	                                <span>Delete from your cart</span>
 	                                <i class="fa fa-times-circle" aria-hidden="true"></i>
@@ -280,3 +280,11 @@
 	</main>
 	<!--main area-->
 </div>
+@push('js')
+{{-- <script>
+	$('#inc,#dec,#del').click(function() {
+		location.reload();
+	});
+</script> --}}
+@endpush
+
